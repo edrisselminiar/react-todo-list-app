@@ -16,6 +16,29 @@ const TodoList = () => {
     }
   }, []);
 
+  const deleteTask = (index) => {
+    let tempList = tasklist
+    tempList.splice(index, 1)
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTasklist(tempList)
+    window.location.reload()
+
+
+  }
+
+  const updateListArray = (obj , index) => {
+    let tempList = tasklist
+    tempList[index] = obj
+    localStorage.setItem("taskList", JSON.stringify(tempList))
+    setTasklist(tempList)
+    window.location.reload()
+
+  }
+
+
+
+
+
   const toggle = () => {
     setModal(!modal);
   };
@@ -43,7 +66,7 @@ const TodoList = () => {
         <div class="row row-cols-1 row-cols-md-4 g-4">
 
         {tasklist.map((obj, index) => 
-            <Card taskObj = {obj} index = {index} />
+            <Card taskObj = {obj} index = {index} deleteTask ={deleteTask} updateListArray={updateListArray} />
         
         )}
       </div>

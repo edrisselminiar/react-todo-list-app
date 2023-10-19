@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Popup = ({ modal, toggle, save }) => {
+const EditPopup = ({ modal, toggle, updateTask ,taskObj }) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -14,21 +14,31 @@ const Popup = ({ modal, toggle, save }) => {
         }
     };
 
-    const handleSave = (e) => {
+    useEffect(() => {
+        setTaskName(taskObj.Name)
+        setDescription(taskObj.Description)
+
+    } ,[])
+
+    const handleUpdate = (e) => {
         e.preventDefault(); // Preventing default form submission behavior
 
-        let taskObj = {};
-        taskObj["Name"] = taskName;
-        taskObj["Description"] = description;
-        save(taskObj);
+        let tempObj = {}
+        tempObj['Name'] = taskName
+        tempObj['Description'] = description
+        updateTask(tempObj)
+        
+        // save(taskObj);
     };
 
     return (
         <div>
             <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>New Task</ModalHeader>
+                <ModalHeader toggle={toggle}>update Task</ModalHeader>
                 <ModalBody>
-                    <form onSubmit={handleSave}>
+                    <form 
+                    // onSubmit={handleSave}
+                    >
                         <div className='form-group px-3'>
                             <label className='text-danger'>Name task</label>
                             <input
@@ -52,8 +62,10 @@ const Popup = ({ modal, toggle, save }) => {
                             ></textarea>
                         </div>
                         <ModalFooter>
-                            <Button color="primary" onClick={handleSave}>
-                                Create
+                            <Button color="primary" 
+                            onClick={handleUpdate}
+                            >  
+                                Update
                             </Button>{' '}
                             <Button color="secondary" onClick={toggle}>
                                 Cancel
@@ -66,4 +78,4 @@ const Popup = ({ modal, toggle, save }) => {
     );
 };
 
-export default Popup;
+export default EditPopup;
