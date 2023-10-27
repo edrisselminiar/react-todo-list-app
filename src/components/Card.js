@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
 import EditPopup from '../modal/EditPopup';
 
+
 const Card = ({taskObj , index , deleteTask , updateListArray }) => {
     const [modal, setModal] =useState(false);
      const colors = [ 
         {
-            primaryColor : "#A5AD9F",
-            secondaryColor : "#40414F",
+            primaryColor : "#B6F640",
+            secondaryColor : "#8CCDB0",
     
         },
         {
-            primaryColor : "#FFE4C4",
-            secondaryColor : "#A5AD9F",
+            primaryColor : "#8CCDB0",
+            secondaryColor : "#E99376",
     
         },
         {
-            primaryColor : "#7EE765",
-            secondaryColor : "#7EE765",
+            primaryColor : "#B6F640",
+            secondaryColor : "#8CCDB0",
     
         },
         {
-            primaryColor : "#000000",
-            secondaryColor : "#FFE4C4",
+            primaryColor : "#E99376",
+            secondaryColor : "#D8A167",
     
         },
         {
-            primaryColor : "#000000",
-            secondaryColor : "#40414F",
+            primaryColor : "#E99376",
+            secondaryColor : "#D8A167",
     
         }
       ]
@@ -45,6 +46,7 @@ const Card = ({taskObj , index , deleteTask , updateListArray }) => {
     }
     
     return (
+        
         <div>
             <div>
            
@@ -53,10 +55,10 @@ const Card = ({taskObj , index , deleteTask , updateListArray }) => {
            <div class="card">
                {/* <img src="https://via.placeholder.  com/300" class="card-img-top" alt="..."> */}
                <div class="card-body" index={index}> {/*props */}
-                   <h5 class="card-title">{taskObj.Name}</h5>
-                   <p class="card-text">{taskObj.Description}</p>
+                   <h5 class="card-title" style={{"color" : colors[index%5].secondaryColor}}>{taskObj.Name}</h5>
+                   <p className="overflw card-text">{taskObj.Description}</p>
                    <div>
-                        <i class="far fa-edit" style={{"color" : "#BC4C24","margin" : "10px"}} onClick={() => setModal(true)}></i>
+                        <i class="far fa-edit" style={{"color" : colors[index%5].secondaryColor,"margin" : "10px"}} onClick={() => setModal(true)}></i>
                         <i class="fas fa-trash-alt" style={{"color" : colors[index%5].primaryColor ,"margin" : "10px"}} onClick={handleDelete}></i>
                    </div>
                </div>
@@ -64,8 +66,12 @@ const Card = ({taskObj , index , deleteTask , updateListArray }) => {
            </div>
        </div>
        <EditPopup modal={modal} toggle={toggle} updateTask={updateTask} taskObj ={taskObj} />
-            
+           
         </div>
+           
+
+        
+         
     );
 };
 

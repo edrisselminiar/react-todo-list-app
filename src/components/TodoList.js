@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Popup from '../modal/Popup';
 import Card from './Card';
+
 const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [tasklist, setTasklist] = useState([]);
@@ -53,16 +54,16 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div className='todo'>
       <div className="header text-center ">
-        <h2>TodoList</h2>
-        <button className="btn btn-danger" onClick={() => setModal(true)}>
+        <h1>TodoList</h1>
+        <button className="btn btn-info " onClick={() => setModal(true)}>
           New Task
         </button>
       </div>
 
 
-      <div class="container">
+      <div className="container">
         <div class="row row-cols-1 row-cols-md-4 g-4">
 
         {tasklist.map((obj, index) => 
@@ -70,6 +71,7 @@ const TodoList = () => {
         
         )}
       </div>
+         
       </div>
 
 
