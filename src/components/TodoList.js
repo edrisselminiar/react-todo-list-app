@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Popup from '../modal/Popup';
 import Card from './Card';
+import logo from './../logo.svg';
 
 const TodoList = () => {
   const [modal, setModal] = useState(false);
@@ -56,10 +57,18 @@ const TodoList = () => {
   return (
     <div className='todo'>
       <div className="header text-center ">
-        <h1>TodoList</h1>
-        <button className="btn btn-info " onClick={() => setModal(true)}>
-          New Task
-        </button>
+        <div className='logo'>
+          <img src={logo} alt="Logo" />   
+        </div>
+
+        <div className='butontask'>
+          <button className="btn btn-info" onClick={() => setModal(true)}>
+            New task
+          </button>  
+        </div>
+
+      
+    
       </div>
 
 
@@ -96,66 +105,3 @@ const TodoList = () => {
 export default TodoList;
 
 
-
-// import React, { useEffect, useState } from 'react';
-
-// import Popup from '../modal/Popup';
-
-// const TodoList = () => {
-//     const [modal, setModal] = useState(false);
-//     const [tasklist, setTasklist] = useState([]);
-
-//     useEffect(()=>{
-//         let arr = localStorage.getItem('tasklist')  
-//         if(arr){
-//             let obj = JSON.parse(arr);
-//             setTasklist(obj);
-//         }
-//     }, []);
-
-//     const toggle = () => {
-//         setModal(!modal);
-//     }
-//     const saveTask = (taskObj) => {
-//         let tempList = [...tasklist]; // Creating a new array 
-//         // let tempList = tasklist
-//         tempList.push(taskObj)
-//         //localstorage
-//         localStorage.setItem("taskList", JSON.stringify(tempList));
-        
-//         setTasklist(tasklist);
-//         setModal(false)
-        
-//     }
-
-//     return (
-//         <div>
-//             <div className='header text-center '>
-//                 <h2>TodoList</h2>
-//                 <button className='btn btn-danger' onClick={() => setModal(true)}>New Task</button>
-//             </div>
-
-
-//             {/* <div className=' task-container'>
-//                 {tasklist.map((obj) => 
-//                     <li>{obj.Name}</li>
-//                 )}
-                
-
-//             </div> */}
-
-//             <ul className="task-container"> {/* Added ul to wrap the list */}
-//                  {tasklist.map((obj, index) => (
-//                      <li key={index}>{obj.Name}</li>
-
-//                 ))}
-//             </ul>
-//            <Popup toggle={toggle} modal={modal} save={saveTask} />
-
-
-            
-//         </div>
-//     );
-// };
-
-// export default TodoList;

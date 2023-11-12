@@ -40,7 +40,7 @@ const EditPopup = ({ modal, toggle, updateTask ,taskObj }) => {
                     // onSubmit={handleSave}
                     >
                         <div className='form-group px-3'>
-                            <label className='text-danger'>Name task</label>
+                            <label className='text-info'>Name task</label>
                             <input
                                 type="text"
                                 placeholder='name task'
@@ -51,7 +51,7 @@ const EditPopup = ({ modal, toggle, updateTask ,taskObj }) => {
                             />
                         </div>
                         <div className='form-group px-3'>
-                            <label className='mt-3 text-danger'>Detail task</label> {/* Fixed the label typo */}
+                            <label className='mt-3 text-info'>Detail task</label> {/* Fixed the label typo */}
                             <textarea
                                 placeholder='Detail task'
                                 rows={"5"}
