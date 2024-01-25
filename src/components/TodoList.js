@@ -45,7 +45,7 @@ const TodoList = () => {
     setModal(!modal);
   };
 
-  const saveTask = (taskObj) => {
+  const saveTask = (taskObj) => { 
     let tempList = [...tasklist]; // Creating a new array to avoid direct mutation
     tempList.push(taskObj);
     //localstorage

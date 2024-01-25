@@ -31,8 +31,9 @@
   background-color: white;
 } */
 .butontask button{
-  width: 200px;
+  width: 9rem;
   height: 100%;
+  margin-left: 9px ;
   font-size: 23px;
   margin-right: 30px;
 
